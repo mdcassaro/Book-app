@@ -16,17 +16,8 @@ export default {
   // Saves a book to the database
   saveBook: function(bookData) {
     return axios.post("/api/books", bookData);
-  }
-};
+  },
 
-
-
-
-
-
-const languages = ["JavaScript", "Python", "C", "Ruby", "Java", "PHP", "C#"];
-// Export an object containing methods we'll use for accessing the random user API
-export default {
   getBooks: function(query) {
     let queryUrl = "https://www.googleapis.com/books/v1/volumes?q=" + query + "&key=AIzaSyDeDO0-rQIayjNRH7VQKCS7YSjb709ER8U"
     return new Promise((resolve, reject) => {
@@ -50,3 +41,10 @@ export default {
     });
   },
 };
+
+
+
+
+
+
+
