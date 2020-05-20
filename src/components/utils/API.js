@@ -19,11 +19,10 @@ export default {
   }
 };
 
-AIzaSyDeDO0-rQIayjNRH7VQKCS7YSjb709ER8U
 
 
 
-import axios from "axios";
+
 
 const languages = ["JavaScript", "Python", "C", "Ruby", "Java", "PHP", "C#"];
 // Export an object containing methods we'll use for accessing the random user API
@@ -34,12 +33,15 @@ export default {
       axios
         .get(queryUrl)
         .then(res => {
-          const users = res.data;
-          const results = users.map(user => {
+          const books = res.items;
+          const results = books.map(book => {
             return {
-              login: user.login,
-              image: user.avatar_url,
-              language: language
+              title: book.volumeInfo.title,
+              authors: book.volumeInfo.authors ,
+              description: book.volumeInfo.description,
+              image: book.volumeInfo.imageLinks.thumbnail,
+              link: book.volumeInfo.infoLink
+
             };
           });
           resolve(results);
@@ -47,10 +49,4 @@ export default {
         .catch(err => reject(err));
     });
   },
-  // Return a Promise to simulate an async call
-  getLanguagesList: function() {
-    return new Promise(resolve => {
-      resolve(languages);
-    });
-  }
 };
