@@ -24,7 +24,7 @@ export default {
       axios
         .get(queryUrl)
         .then(res => {
-          const books = res.items;
+          const books = res.data.items;
           const results = books.map(book => {
             return {
               title: book.volumeInfo.title,
